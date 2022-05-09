@@ -43,4 +43,3 @@ echo"server {
 sudo ln -s /etc/nginx/sites-available/django12 /etc/nginx/sites-enabled/
 sudo rm /etc/nginx/sites-enabled/default
 sudo systemctl restart nginx
-sudo systemctl restart gunicorn
