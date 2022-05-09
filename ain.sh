@@ -18,7 +18,7 @@ ExecStart=/home/ubuntu/projectdir/env/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
           --bind unix:/run/gunicorn.sock \
-          docker.wsgi:application
+          djangot.wsgi:application
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/gunicorn.service
 
