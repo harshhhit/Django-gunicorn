@@ -22,7 +22,7 @@ ExecStart=/home/ubuntu/env/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
           --bind unix:/run/gunicorn.sock \
-          first.wsgi:application
+          djangot.wsgi:application
 [Install]
 WantedBy=multi-user.target"  >  /etc/systemd/system/gunicorn.service
 
@@ -33,7 +33,7 @@ sudo systemctl enable gunicorn.socket
 
 echo "server {
     listen 80;
-    server_name 54.199.155.202;
+    server_name 35.154.39.253;
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
         root /home/ubuntu/;
@@ -42,10 +42,10 @@ echo "server {
         include proxy_params;
         proxy_pass http://unix:/run/gunicorn.sock;
     }
-}" > /etc/nginx/sites-available/first
+}" > /etc/nginx/sites-available/django2
 
 
-sudo ln -s /etc/nginx/sites-available/first /etc/nginx/sites-enabled/
+sudo ln -s /etc/nginx/sites-available/django2 /etc/nginx/sites-enabled/
 
 sudo rm /etc/nginx//sites-enabled/default
 
