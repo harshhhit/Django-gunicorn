@@ -14,12 +14,12 @@ After=network.target
 [Service]
 User=ubuntu
 Group=www-data
-WorkingDirectory=/home/ubuntu
+WorkingDirectory=/home/ubuntu/
 ExecStart=/home/ubuntu/env/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
           --bind unix:/run/gunicorn.sock \
-          djangot2.wsgi:application
+          djangot.wsgi:application
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/gunicorn.service
 
