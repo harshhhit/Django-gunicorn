@@ -1,11 +1,13 @@
 #!/bin/bash
 deactivate
+
 echo"[Unit]
 Description=gunicorn socket
 [Socket]
 ListenStream=/run/gunicorn.sock
 [Install]
-WantedBy=sockets.target" > sudo vim /etc/systemd/system/gunicorn.socket
+WantedBy=sockets.target" > /etc/systemd/system/gunicorn.socket
+
 echo"[Unit]
 Description=gunicorn daemon
 Requires=gunicorn.socket
