@@ -1,0 +1,12 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/
+hooks:
+  BeforeInstall: 
+    - location: bin.sh
+      timeout: 100
+  AfterInstall:
+    - location: ain.sh
+      timeout: 100
