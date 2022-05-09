@@ -1,14 +1,16 @@
-#!/bin/bash
+#!/bin/bash 
+
 deactivate
 
-echo"[Unit]
+echo "[Unit]
 Description=gunicorn socket
 [Socket]
 ListenStream=/run/gunicorn.sock
 [Install]
-WantedBy=sockets.target" > /etc/systemd/system/gunicorn.socket
+WantedBy=sockets.target
+" > /etc/systemd/system/gunicorn.socket
 
-echo"[Unit]
+echo " [Unit]
 Description=gunicorn daemon
 Requires=gunicorn.socket
 After=network.target
@@ -20,26 +22,31 @@ ExecStart=/home/ubuntu/env/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
           --bind unix:/run/gunicorn.sock \
-          djangot.wsgi:application
+          first.wsgi:application
 [Install]
-WantedBy=multi-user.target" > /etc/systemd/system/gunicorn.service
+WantedBy=multi-user.target"  >  /etc/systemd/system/gunicorn.service
 
 sudo systemctl start gunicorn.socket
+
 sudo systemctl enable gunicorn.socket
 
-echo"server {
+
+echo "server {
     listen 80;
-    server_name 35.154.39.253;
+    server_name 54.199.155.202;
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        root /home/ubuntu;
+        root /home/ubuntu/;
     }
     location / {
         include proxy_params;
         proxy_pass http://unix:/run/gunicorn.sock;
     }
-}" > /etc/nginx/sites-available/django12
+}" > /etc/nginx/sites-available/first
 
-sudo ln -s /etc/nginx/sites-available/django12 /etc/nginx/sites-enabled/
-sudo rm /etc/nginx/sites-enabled/default
+
+sudo ln -s /etc/nginx/sites-available/first /etc/nginx/sites-enabled/
+
+sudo rm /etc/nginx//sites-enabled/default
+
 sudo systemctl restart nginx
