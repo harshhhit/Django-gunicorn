@@ -31,7 +31,7 @@ echo "server {
     server_name 35.154.39.253;
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
-        root /home/ubuntu/projectdir;
+        root /home/ubuntu/;
     }
     location / {
         include proxy_params;
@@ -42,4 +42,4 @@ echo "server {
 sudo ln -s /etc/nginx/sites-available/djangot2 /etc/nginx/sites-enabled/
 sudo rm /etc/nginx/sites-enabled/default
 sudo systemctl restart nginx
-sudo systemctl restart gunicorn
+
