@@ -10,8 +10,11 @@ After=network.target
 User=ubuntu
 Group=www-data
 WorkingDirectory=/home/ubuntu/
-ExecStart=/home/ubuntu/env/bin/gunicorn \
-          
+ExecStart=/home/ubuntu/env/bin/gunicorn 
+         
+[Install]
+WantedBy=multi-user.target" > /etc/systemd/system/gunicorn.service
+
 
 echo "server {
     listen 80;
@@ -22,11 +25,10 @@ echo "server {
     }
     location / {
         include proxy_params;
-        proxy_pass http://unix:/run/gunicorn.sock;
+        proxy_pass /home/ubuntu/env/bin/gunicorn 
     }
 }" > /etc/nginx/sites-available/djangot2
 
 sudo ln -s /etc/nginx/sites-available/djangot2 /etc/nginx/sites-enabled/
 sudo rm /etc/nginx/sites-enabled/default
 sudo systemctl restart nginx
-
