@@ -20,7 +20,7 @@ WantedBy=multi-user.target" > /etc/systemd/system/gunicorn.service
 
 echo "server {
     listen 80;
-    server_name 13.126.133.79;
+    server_name 15.207.221.133;
     location = /favicon.ico { access_log off; log_not_found off; }
     location /static/ {
         root /home/ubuntu;
