@@ -12,7 +12,7 @@ WorkingDirectory=/home/ubuntu/
 ExecStart=/home/ubuntu/env/bin/gunicorn \
           --access-logfile - \
           --workers 3 \
-          --bind unix:/run/gunicorn.sock \
+          --bind 0.0.0.0:8000 \
           djangot.wsgi:application
 [Install]
 WantedBy=multi-user.target" > /etc/systemd/system/gunicorn.service
@@ -27,7 +27,7 @@ echo "server {
     }
     location / {
         include proxy_params;
-        proxy_pass http://unix:/run/gunicorn.sock;
+        proxy_pass http://15.207.221.133:8000;
     }
 }" > /etc/nginx/sites-available/djangot2
 
