@@ -8,5 +8,4 @@ virtualenv env
 source env/bin/activate
 pip install django gunicorn
 deactivate
-cd /home/ubuntu
-sudo apt update
+
