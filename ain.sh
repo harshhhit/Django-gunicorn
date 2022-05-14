@@ -31,7 +31,7 @@ echo "server {
     }
 }" > /etc/nginx/sites-available/djangot2
 
-sudo fuser -k 80/tcp
+
 
 
 
