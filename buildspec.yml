@@ -1,0 +1,26 @@
+
+version: 0.2
+phases:
+  install:
+    runtime-versions:
+      python: 3.9
+  pre_build:
+    commands:
+     # - apt-get install python3.9
+      - pip install -r requirements.txt
+      #- apt-get install screen
+     
+  build:
+    commands:
+      - echo Build started on `date`
+      #- django-admin runserver 
+  post_build:
+    commands:
+      - echo Build completed on `date`
+#      - python3 manage.py runserver 0.0.0.0:8000
+    finally:
+      - python3 manage.py runserver  &
+      
+artifacts:
+  files:
+    - '**/*'
