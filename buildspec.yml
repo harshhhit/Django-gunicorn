@@ -7,7 +7,7 @@ phases:
   pre_build:
     commands:
      # - apt-get install python3.9
-      - pip install -r requirements.txt
+      - pip install django
       #- apt-get install screen
      
   build:
