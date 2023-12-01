@@ -1,0 +1,6 @@
+steps:
+  steps:
+
+  - name: 'ubuntu'
+    entrypoint: 'bash'
+    args: ['verify', 'sonar:sonar','-Dsonar.host.url=https://sonarcloud.io','-Dsonar.organization=cleanmoutain','-Dsonar.projectKey=cleanmoutain_cleane','-Dsonar.login=${_SONAR_TOKEN}']
